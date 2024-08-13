@@ -1,0 +1,30 @@
+# deep_learning_config.yaml
+data_path: "/home/jovyan/hfactory_magic_folders/financial_graph_mining_for_customers___supply_chains_assessment/transactions_x.csv"
+node_attributes_path: "/home/jovyan/hfactory_magic_folders/shared_storage/data/preprocessed_data.csv"
+save_path_csv_scores: "output/deep_learning_model_evaluation_results.csv"
+
+# Model configurations
+models:
+  SimpleGCN:
+    train: True
+    epochs: 500
+    verbose: True
+    val_size: .2
+    print_every: 200
+    optimizer:
+      type: Adam
+      lr: 0.01
+    model_params:
+      h_dim: 64
+      dropout: 0.2
+      output_dim: 1
+    criterion: MAPELoss
+    scheduler:
+      type: ReduceLROnPlateau
+      factor: 0.5
+      patience: 100
+    visualization:
+      save_plots: True
+      save_path: "output/SimpleGCN"
+      plot_limit: 10000000
+      plot_bins: 50
